@@ -1,0 +1,200 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>Cadastro de Livros</title>
+</head>
+
+<body>
+    <div class="container">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light mt-2">
+                
+            <img src="img/livro.jpg" height="60px" class="navbar-brand rounded-circle">
+            
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="navbar-nav mr-auto">
+                    <span class="navbar-text">Cadastro de Livros</span>
+                    
+                    <a class="nav-item nav-link" href="#" id="linkInicio">Início
+                        <span class="sr-only">(current)</span></a>
+                    
+                    
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" 
+                            id="navbarDropdownMenuLink" data-toggle="dropdown" 
+                            aria-haspopup="true" aria-expanded="false">
+                              Cadastros
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="#" id="linkListarLivros">Livros</a>
+                            </div>
+                        </li>
+
+                        <a class="nav-item nav-link" href="#" id="linkListarLeitor">Leitor</a>
+                        <a class="nav-item nav-link" href="#" id="linkListarBiblioteca">Biblioteca</a>
+                        <a class="nav-item nav-link" href="#" id="linkListarLeitura">Leitura</a>
+                </div>
+            </div>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </nav>
+
+        <div id="corpoDaPagina">
+
+            <div id="conteudoInicial" class="invisible">
+                <br>
+                <p>Seja bem vindo ao Sistema de Cadastro de Livros!</p>
+            </div>
+
+         <div class="modal fade" id="modalIncluirLivro" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalLabel" aria-hidden="true">
+         <div class="modal-dialog" role="document">
+             <div class="modal-content">
+                 <div class="modal-header">
+                     <h5 class="modal-title" id="exampleModalLabel">Incluir Livro</h5>
+                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                         <span aria-hidden="true">&times;</span>
+                     </button>
+                 </div>
+                 <div class="modal-body">
+                     <form>
+                         <div class="form-group">
+                             <label for="campoNome">Nome</label>
+                             <input type="text" class="form-control" id="campoNome"
+                                 aria-describedby="nomeHelp" placeholder="Nome">
+                             <small id="nomeHelp" class="form-text text-muted">Informe o seu nome completo do livro, sem
+                                 abreviações.</small>
+                         </div>
+                         <div class="form-group">
+                             <label for="campoautor">autor</label>
+                             <input type="text" class="form-control" id="campoautor"
+                                 aria-describedby="autorHelp" placeholder="autor">
+                             <small id="autorHelp" class="form-text text-muted">Informe qual é o nome do autor</small>
+                         </div>
+                         <div class="form-group">
+                            <label for="campoAno">Ano</label>
+                            <input type="text" class="form-control" id="campoAno"
+                                aria-describedby="anoHelp" placeholder="Ano">
+                            <small id="anoHelp" class="form-text text-muted">Informe em qual ano o livro foi publicado</small>
+                        </div>
+                     </form>
+                 </div>
+
+                 <div class="modal-footer">
+                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                     <button id="btIncluirLivro" type="button" class="btn btn-primary">Incluir</button>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <div class="container" id="cadastroLivros">
+            <h5>Cadastro de Livros</h5>
+
+            <a class="nav-item nav-link" data-toggle="modal" 
+            data-target="#modalIncluirLivro" href="#"><img src="img/incluir.png" height="60px" title="Incluir profissao"></a>
+            
+            <table class="table invisible table-striped table-hover" id="TabelaLivros">
+                <thead>
+                    <tr>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Autor</th>
+                        <th scope="col">Ano</th>
+                        <th scope="col">Excluir</th>
+                    </tr>
+                </thead>
+                <tbody id="corpoTabelaLivros">
+                </tbody>
+            </table>
+
+        </div>
+
+        <div class="container" id="cadastroLeitor">
+            <h5>Leitor</h5>
+
+            <a class="nav-item nav-link" data-toggle="modal" 
+            data-target="#modalIncluirLeitor" href="#">
+              <img src="img/incluir.png" height="60px" title="Incluir leitor"></a>
+            
+            <table class="table table-striped table-hover" id="tabelaLeitor">
+                <thead>
+                    <tr>
+                        <th scope="col">Nome do leitor</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Autor</th>
+                        <th scope="col">Ano</th>
+                        <th scope="col">Excluir</th>
+                    </tr>
+                </thead>
+                <tbody id="corpoTabelaLeitor">
+                </tbody>
+            </table>
+        </div>
+
+        <div class="container" id="cadastroBiblioteca">
+            <h5>Biblioteca</h5>
+
+            <a class="nav-item nav-link" data-toggle="modal" 
+            data-target="#modalIncluirBiblioteca" href="#">
+              <img src="img/incluir.png" height="60px" title="Incluir biblioteca"></a>
+            
+            <table class="table table-striped table-hover" id="tabelaBiblioteca">
+                <thead>
+                    <tr>
+                        <th scope="col">Nome da biblioteca</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Autor</th>
+                        <th scope="col">Ano</th>
+                        <th scope="col">Excluir</th>
+                    </tr>
+                </thead>
+                <tbody id="corpoTabelaBiblioteca">
+                </tbody>
+            </table>
+        </div>
+
+        <div class="container" id="cadastroLeitura">
+            <h5>Leitura</h5>
+
+            <a class="nav-item nav-link" data-toggle="modal" 
+            data-target="#modalIncluirLeitura" href="#">
+              <img src="img/incluir.png" height="60px" title="Incluir leitura"></a>
+            
+            <table class="table table-striped table-hover" id="TabelaLeitura">
+                <thead>
+                    <tr>
+                        <th scope="col">Identificador da leitura</th>
+                        <th scope="col">Excluir</th>
+                    </tr>
+                </thead>
+                <tbody id="corpoTabelaLeitura">
+                </tbody>
+            </table>
+        </div>
+
+
+
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <script src="js/meuscript.js"></script>
+</body>
+
+
+</html>

@@ -22,12 +22,12 @@ class Leitor(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(254)) 
     
-    livro_id = db.Column(db.Integer, db.ForeignKey(Livro.id), nullable=False) 
+    livro_id = db.Column(db.Integer, db.ForeignKey(Livro.id)) 
     #NULLABLE SERVE PARA QUANDO É DEPENDENTE UM DO OUTRO
     livro = db.relationship("Livro")
 
     def __str__(self):
-        return  f"{self.nome} [{self.id}]"
+        return  self.nome + ", " + str(self.livro) 
 
     def json(self):
         return {
@@ -70,8 +70,7 @@ class Biblioteca(db.Model):
             "livro": livro,
             "data_emprestimo": data_emprestimo
         } 
-
-
+    
 class Leitura(db.Model):
     id = db.Column(db.Integer, primary_key=True) 
 
@@ -79,10 +78,10 @@ class Leitura(db.Model):
     livro = db.relationship("Livro")
 
     leitor_id = db.Column(db.Integer, db.ForeignKey(Leitor.id))
-    leitor_id = db.relationship("Leitor")
+    leitor = db.relationship("Leitor")
 
-    def __str__(self): # expressão da classe em forma de texto
-        return f"{self.livro}, {self.leitor}"
+    def __str__(self):
+        return  self.nome + ", " + str(self.livro) 
 
     def json(self):
         return {
@@ -90,7 +89,7 @@ class Leitura(db.Model):
             "livro_id":self.livro_id,
             "livro":self.livro.json(),
             "leitor_id":self.leitor_id,
-            "leitor":self.leitor.json(),
+            "leitor":self.leitor.json()  
         }
 
 
